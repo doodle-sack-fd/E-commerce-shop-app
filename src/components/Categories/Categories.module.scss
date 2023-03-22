@@ -1,0 +1,30 @@
+.categories {
+  background: #FFFFFF;
+  border-top: 1px solid #efefef;
+
+  &__container {
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 79px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 19px;
+
+    .item {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      margin-left: 40px;
+      cursor: pointer;
+    }
+  }
+}
