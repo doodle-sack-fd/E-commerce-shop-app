@@ -1,6 +1,7 @@
 .categories {
   background: #FFFFFF;
   border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
 
   &__container {
     max-width: 1110px;
@@ -18,6 +19,7 @@
     font-weight: 400;
     font-size: 22px;
     line-height: 19px;
+    
 
     .item {
       border: none;
