@@ -1,5 +1,11 @@
 import { fetchProducts } from './../../actions/ActionCreators';
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../../store';
+
+export interface IProductRating {
+  rate: number;
+  count: number;
+}
 
 export interface IProductsItem {
   id: number;
@@ -8,7 +14,7 @@ export interface IProductsItem {
   description: string;
   category: string;
   image: string;
-  rating: {};
+  rating: IProductRating;
 }
 
 export interface IProductState {
@@ -48,4 +54,6 @@ const productsSlice = createSlice({
 });
 
 // !actions!
+export const selectProductsAll = (state: RootState) => state.products;
+
 export default productsSlice.reducer;
