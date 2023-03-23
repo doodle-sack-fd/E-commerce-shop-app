@@ -4,6 +4,8 @@ import styles from './ItemBlock.module.scss';
 
 import { FcRating } from 'react-icons/fc';
 import { FiDollarSign } from 'react-icons/fi';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import CartButton from '../UI/button/CartButton';
 
 export interface IProductRating {
   rate: number;
@@ -39,6 +41,9 @@ const ItemBlock: FC<IProductsItem> = ({
       <p className={styles.itemBlock__price}>
         {price} <FiDollarSign />
       </p>
+      <div className={styles.itemBlock__cartContainer}>
+        <CartButton>add to cart</CartButton>
+      </div>
     </li>
   );
 };

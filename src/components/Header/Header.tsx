@@ -3,11 +3,9 @@ import styles from './Header.module.scss';
 import logo from '../../assets/img/logo.svg';
 
 import Search from '../Search/Search';
-
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import CartButton from '../UI/button/CartButton';
 
 const Header: FC = () => {
-
   return (
     <div className={styles.header}>
       <div className={styles.header__container}>
@@ -17,12 +15,7 @@ const Header: FC = () => {
         <div className={styles.header__search}>
           <Search />
         </div>
-        <button className={styles.header__cart}>
-          <div className={styles.header__cartIcon}>
-            <AiOutlineShoppingCart />
-          </div>
-          Корзина
-        </button>
+        <CartButton>cart</CartButton>
       </div>
     </div>
   );
