@@ -7,7 +7,6 @@ import MainBlock from '../components/MainBlock/MainBlock';
 const Home = () => {
   return (
     <>
-      <Header />
       <Categories />
       <MainBlock />
       <Footer />

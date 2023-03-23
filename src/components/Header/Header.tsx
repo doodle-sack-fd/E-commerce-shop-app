@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import styles from './Header.module.scss';
 import logo from '../../assets/img/logo.svg';
 
+import { Link } from 'react-router-dom';
+
 import Search from '../Search/Search';
 import CartButton from '../UI/button/CartButton';
 
@@ -15,7 +17,10 @@ const Header: FC = () => {
         <div className={styles.header__search}>
           <Search />
         </div>
-        <CartButton>cart</CartButton>
+
+        <Link to="/cart" className={styles.header__link}>
+          <CartButton>cart</CartButton>
+        </Link>
       </div>
     </div>
   );
