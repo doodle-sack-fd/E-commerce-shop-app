@@ -1,15 +1,15 @@
 import './App.css';
 import Categories from './components/Categories/Categories';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import ItemBlock from './components/ItemBlock/ItemBlock';
 import MainBlock from './components/MainBlock/MainBlock';
+import Home from './pages/Home';
+import './scss/global.scss'
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Categories />
-      <MainBlock />
+      <Home />
     </div>
   );
 }

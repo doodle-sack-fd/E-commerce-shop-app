@@ -1,0 +1,19 @@
+.MainBlock {
+  background: #fefefe;
+  border-bottom: 1px solid #efefef;
+  &__container {
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: minmax(calc(100vh - 460px),auto) 120px;
+    list-style: none;
+    gap: 40px;
+    justify-content: space-between;
+    margin: 0;
+    padding-top: 40px;
+  }
+}
