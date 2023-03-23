@@ -13,8 +13,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="" element={<Home />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </div>

@@ -11,9 +11,11 @@ const Header: FC = () => {
   return (
     <div className={styles.header}>
       <div className={styles.header__container}>
-        <div className={styles.header__logo}>
-          <img src={logo} alt="Company-logo" />
-        </div>
+        <Link to=''>
+          <div className={styles.header__logo}>
+            <img src={logo} alt="Company-logo" />
+          </div>
+        </Link>
         <div className={styles.header__search}>
           <Search />
         </div>

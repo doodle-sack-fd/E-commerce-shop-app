@@ -2,6 +2,7 @@
   background: #FFFFFF;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
+  
 
   &__container {
     max-width: 1110px;
@@ -12,7 +13,7 @@
     margin: 0;
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     height: 79px;
     font-style: normal;
@@ -23,10 +24,18 @@
 
     .item {
       border: none;
+      text-transform: uppercase;
       outline: none;
       background-color: transparent;
       margin-left: 40px;
       cursor: pointer;
     }
+  }
+
+  &__title {
+    margin-right: auto;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 50px;
   }
 }

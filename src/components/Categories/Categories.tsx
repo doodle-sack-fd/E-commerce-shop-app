@@ -8,8 +8,11 @@ const Categories: FC = () => {
     <div className={styles.categories}>
       <div className={styles.categories__container}>
         <ul className={styles.categories__list}>
+          <p className={styles.categories__title}>Catalog</p>
           {categories.map((item) => (
-            <button className={styles.item} key={item}>{item}</button>
+            <button className={styles.item} key={item}>
+              {item}
+            </button>
           ))}
         </ul>
       </div>
