@@ -11,10 +11,11 @@ import MainLayout from './layouts/MainLayout';
 function App() {
   return (
     <div className="App">
-      <MainLayout />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
       </Routes>
     </div>
   );
