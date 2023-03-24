@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './Search.module.scss';
 
@@ -6,29 +6,24 @@ import { SelectFilterAll, setSearchQuery } from '../../redux/slices/Filters/Filt
 
 import { useDispatch } from 'react-redux';
 
-import debounce from 'lodash.debounce';
+import { DebounceInput } from 'react-debounce-input';
 
 const Search: FC = () => {
   const { searchQuery } = useSelector(SelectFilterAll);
-  const dispatch = useDispatch()
-  
-  // const updateInput = useCallback(
-  //   debounce((str: string) => {
-  //     dispatch(setSearchQuery(str));
-  //   }, 500),
-  //   [],
-  // );
+  const dispatch = useDispatch();
 
   const onChangeInput = (evt: React.ChangeEvent<HTMLInputElement>) => {
-     dispatch(setSearchQuery(evt.target.value));
-  }
+    dispatch(setSearchQuery(evt.target.value));
+  };
 
   return (
-    <input
+    <DebounceInput
+      minLength={2}
+      debounceTimeout={300}
       className={styles.search}
       placeholder="Введите ваш запрос"
       value={searchQuery}
-      onChange={onChangeInput}></input>
+      onChange={onChangeInput}></DebounceInput>
   );
 };
 
