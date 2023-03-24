@@ -24,10 +24,11 @@ const MainBlock: FC = () => {
     .map((item) => <ItemBlock key={item.id} {...item} />);
 
   useEffect(() => {
+    const category = categoryId !== 'all' ? `/category/${categoryId}` : '';
     const getItems = async () => {
-      dispatch(fetchProducts(categoryId));
+      dispatch(fetchProducts({category}));
     };
-    getItems(categoryId);
+    getItems();
   }, [categoryId]);
 
   return (

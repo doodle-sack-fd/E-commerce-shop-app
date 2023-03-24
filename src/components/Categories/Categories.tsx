@@ -1,13 +1,10 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { SelectFilterCategory, setCategoryId } from '../../redux/slices/Filters/FilterSlice';
+import { setCategoryId } from '../../redux/slices/Filters/FilterSlice';
 import styles from './Categories.module.scss';
 
 const Categories: FC = () => {
   const categories = ['all', "men's clothing", "women's clothing", 'jewelery', 'electronics'];
-
-  const categoryId = useSelector(SelectFilterCategory);
  
   const dispatch = useDispatch()
 
