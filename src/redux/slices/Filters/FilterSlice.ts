@@ -3,10 +3,12 @@ import { RootState } from '../../store';
 
 export interface IFilter {
   searchQuery: string;
+  categoryId: string;
 }
 
 const initialState: IFilter = {
   searchQuery: '',
+  categoryId: "men's clothing",
 };
 
 export const filterSlice = createSlice({
@@ -16,11 +18,15 @@ export const filterSlice = createSlice({
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
     },
+    setCategoryId: (state, action: PayloadAction<string>) => {
+      state.categoryId = action.payload;
+    },
   },
 });
 
-export const SelectFilterAll = (state: RootState) => state.filter;
+export const SelectFilterSearch = (state: RootState) => state.filter.searchQuery;
+export const SelectFilterCategory = (state: RootState) => state.filter.categoryId
 
-export const { setSearchQuery } = filterSlice.actions;
+export const { setSearchQuery, setCategoryId } = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -6,11 +6,12 @@ import { selectProductsAll, StatusKey } from '../../redux/slices/products/produc
 import ItemBlock from '../ItemBlock/ItemBlock';
 import styles from './MainBlock.module.scss';
 import Error from '../../pages/Error';
-import { SelectFilterAll } from '../../redux/slices/Filters/FilterSlice';
+import { SelectFilterCategory, SelectFilterSearch } from '../../redux/slices/Filters/FilterSlice';
 
 const MainBlock: FC = () => {
   const { products, status } = useSelector(selectProductsAll);
-  const { searchQuery } = useSelector(SelectFilterAll);
+  const searchQuery = useSelector(SelectFilterSearch);
+  const categoryId = useSelector(SelectFilterCategory);
 
   const dispatch = useAppDispatch();
 
@@ -24,10 +25,10 @@ const MainBlock: FC = () => {
 
   useEffect(() => {
     const getItems = async () => {
-      dispatch(fetchProducts());
+      dispatch(fetchProducts(categoryId));
     };
-    getItems();
-  }, []);
+    getItems(categoryId);
+  }, [categoryId]);
 
   return (
     <div className={styles.MainBlock}>
