@@ -6,6 +6,9 @@ import { FcRating } from 'react-icons/fc';
 import { FiDollarSign } from 'react-icons/fi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import CartButton from '../UI/button/CartButton';
+import { useSelector } from 'react-redux';
+import { addProductToCart, ICartSlice, SelectCartAddProduct } from '../../redux/slices/Cart/CartSlice';
+import { useDispatch } from 'react-redux';
 
 export interface IProductRating {
   rate: number;
@@ -31,6 +34,24 @@ const ItemBlock: FC<IProductsItem> = ({
   rating,
   title,
 }) => {
+
+  const  products  = useSelector(SelectCartAddProduct);
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+      const item: ICartSlice  = {
+        id,
+        title,
+        price,
+        description,
+        category,
+        image
+        
+      };
+      dispatch(addProductToCart(item));
+  }
+  console.log(products)
+
   return (
     <li className={styles.itemBlock}>
       <img className={styles.itemBlock__img} src={image} alt="Product" width={120} />
@@ -42,7 +63,7 @@ const ItemBlock: FC<IProductsItem> = ({
         {price} <FiDollarSign />
       </p>
       <div className={styles.itemBlock__cartContainer}>
-        <CartButton>add to cart</CartButton>
+        <CartButton onClick={addToCart}>add to cart</CartButton>
       </div>
     </li>
   );

@@ -26,10 +26,10 @@ const MainBlock: FC = () => {
   useEffect(() => {
     const category = categoryId !== 'all' ? `/category/${categoryId}` : '';
     const getItems = async () => {
-      dispatch(fetchProducts({category}));
+      dispatch(fetchProducts({ category }));
     };
     getItems();
-  }, [categoryId]);
+  }, [dispatch, categoryId]);
 
   return (
     <div className={styles.MainBlock}>
