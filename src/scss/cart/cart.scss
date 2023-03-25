@@ -1,0 +1,16 @@
+.CartBlock {
+  &__container {
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+
+  &__item{
+    display: flex;
+    width: 600px;
+  }
+
+  &__desc{
+    text-align: left;
+    padding-left: 20px;
+  }
+}

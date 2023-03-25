@@ -37,11 +37,15 @@ const CartSlice = createSlice({
 
       state.totalPrice = calcTotalPrice(state.products);
     },
+    removeProduct: (state, action: PayloadAction<number>) => {
+      state.products =  state.products.filter((item) => item.id !== action.payload)
+    },
   },
 });
 
+export const SelectAllCart = (state: RootState) => state.cart;
 export const SelectCartAddProduct = (state: RootState) => state.cart.products;
-export const SelectCartTotalPrice = (state: RootState) => state.cart.totalPrice
-export const { addProductToCart } = CartSlice.actions;
+export const SelectCartTotalPrice = (state: RootState) => state.cart.totalPrice;
+export const { addProductToCart, removeProduct } = CartSlice.actions;
 
 export default CartSlice.reducer;

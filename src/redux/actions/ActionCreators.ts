@@ -12,7 +12,7 @@ export const fetchProducts = createAsyncThunk(
     try {
       const { category } = params;
 
-      const { data } = await axios.get(`https://fakestoreapi.com/products${category} `);
+      const { data } = await axios.get(`https://fakestoreapi.com/products${category}`);
 
       return data as IProductsItem[];
     } catch (error) {
