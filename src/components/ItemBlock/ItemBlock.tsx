@@ -4,11 +4,9 @@ import styles from './ItemBlock.module.scss';
 
 import { FcRating } from 'react-icons/fc';
 import { FiDollarSign } from 'react-icons/fi';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import CartButton from '../UI/button/CartButton';
-import { useSelector } from 'react-redux';
-import { addProductToCart, ICartSlice, SelectCartAddProduct } from '../../redux/slices/Cart/CartSlice';
 import { useDispatch } from 'react-redux';
+import { addProductToCart, ICartSlice } from '../../redux/slices/Cart/CartSlice';
+import CartButton from '../UI/button/CartButton';
 
 export interface IProductRating {
   rate: number;
@@ -35,7 +33,6 @@ const ItemBlock: FC<IProductsItem> = ({
   title,
 }) => {
 
-  const  products  = useSelector(SelectCartAddProduct);
   const dispatch = useDispatch()
 
   const addToCart = () => {
@@ -50,7 +47,6 @@ const ItemBlock: FC<IProductsItem> = ({
       };
       dispatch(addProductToCart(item));
   }
-  console.log(products)
 
   return (
     <li className={styles.itemBlock}>

@@ -1,12 +1,12 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Error from '../../pages/Error';
 import { fetchProducts } from '../../redux/actions/ActionCreators';
-import { useAppDispatch } from '../../redux/store';
+import { SelectFilterCategory, SelectFilterSearch } from '../../redux/slices/Filters/FilterSlice';
 import { selectProductsAll, StatusKey } from '../../redux/slices/products/productSlice';
+import { useAppDispatch } from '../../redux/store';
 import ItemBlock from '../ItemBlock/ItemBlock';
 import styles from './MainBlock.module.scss';
-import Error from '../../pages/Error';
-import { SelectFilterCategory, SelectFilterSearch } from '../../redux/slices/Filters/FilterSlice';
 
 const MainBlock: FC = () => {
   const { products, status } = useSelector(selectProductsAll);

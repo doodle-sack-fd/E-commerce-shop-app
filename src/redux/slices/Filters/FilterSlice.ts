@@ -8,7 +8,7 @@ export interface IFilter {
 
 const initialState: IFilter = {
   searchQuery: '',
-  categoryId: "men's clothing",
+  categoryId: "all",
 };
 
 export const filterSlice = createSlice({
