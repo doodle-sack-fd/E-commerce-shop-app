@@ -1,6 +1,7 @@
 import { fetchProducts } from './../../actions/ActionCreators';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
+import { ICartSlice } from '../Cart/CartSlice';
 
 export interface IProductRating {
   rate: number;
@@ -14,12 +15,13 @@ export interface IProductsItem {
   description: string;
   category: string;
   image: string;
-  rating: IProductRating;
+  rating?: IProductRating;
 }
 
 export interface IProductState {
   products: IProductsItem[];
   status: string;
+  isLiked: IProductsItem[]
 }
 
 export enum StatusKey {
@@ -31,12 +33,17 @@ export enum StatusKey {
 const initialState: IProductState = {
   products: [],
   status: StatusKey.LOADING,
+  isLiked: [],
 };
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsLiked: (state, action: PayloadAction<IProductsItem>) => {
+      state.isLiked.push(action.payload)
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.status = StatusKey.LOADING;
@@ -55,5 +62,8 @@ const productsSlice = createSlice({
 
 // !actions!
 export const selectProductsAll = (state: RootState) => state.products;
+export const SelectIsLiked = (state: RootState) => state.products.isLiked;
+
+export const { setIsLiked } = productsSlice.actions;
 
 export default productsSlice.reducer;

@@ -8,7 +8,7 @@ export interface IFilter {
 
 const initialState: IFilter = {
   searchQuery: '',
-  categoryId: "all",
+  categoryId: 'all',
 };
 
 export const filterSlice = createSlice({
@@ -25,7 +25,7 @@ export const filterSlice = createSlice({
 });
 
 export const SelectFilterSearch = (state: RootState) => state.filter.searchQuery;
-export const SelectFilterCategory = (state: RootState) => state.filter.categoryId
+export const SelectFilterCategory = (state: RootState) => state.filter.categoryId;
 
 export const { setSearchQuery, setCategoryId } = filterSlice.actions;
 
