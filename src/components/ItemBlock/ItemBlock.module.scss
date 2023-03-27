@@ -9,6 +9,14 @@
   box-sizing: border-box;
   position: relative;
 
+  &__liked{
+    text-align: right;
+
+    &:hover{
+      color: red;
+    }
+  }
+
   &__img {
     width: 130px;
     height: 180px;
