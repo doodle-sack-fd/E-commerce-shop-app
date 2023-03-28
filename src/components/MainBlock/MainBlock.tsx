@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Error from '../../pages/Error';
 import { fetchProducts } from '../../redux/actions/ActionCreators';
 import { SelectFilterCategory, SelectFilterSearch } from '../../redux/slices/Filters/FilterSlice';
-import { selectProductsAll, StatusKey } from '../../redux/slices/products/productSlice';
+import { IProductsItem, selectProductsAll, setIsLiked, StatusKey } from '../../redux/slices/products/productSlice';
 import { useAppDispatch } from '../../redux/store';
 import ItemBlock from '../ItemBlock/ItemBlock';
 import styles from './MainBlock.module.scss';
@@ -22,6 +22,8 @@ const MainBlock: FC = () => {
         : item.title.toLowerCase().includes(searchQuery.toLowerCase());
     })
     .map((item) => <ItemBlock key={item.id} {...item} />);
+
+// Cat doesn't like kisses :(
 
   useEffect(() => {
     const category = categoryId !== 'all' ? `/category/${categoryId}` : '';

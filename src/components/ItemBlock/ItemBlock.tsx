@@ -1,5 +1,8 @@
 import { FC } from 'react';
-import { IProductsItem, setIsLiked } from '../../redux/slices/products/productSlice';
+import {
+  IProductsItem, SelectIsLiked,
+  setIsLiked
+} from '../../redux/slices/products/productSlice';
 import styles from './ItemBlock.module.scss';
 
 import { FcRating } from 'react-icons/fc';
@@ -9,7 +12,7 @@ import { addProductToCart, ICartSlice } from '../../redux/slices/Cart/CartSlice'
 import CartButton from '../UI/button/CartButton';
 
 import { AiOutlineHeart } from 'react-icons/ai';
-
+import { useSelector } from 'react-redux';
 
 export interface IProductRating {
   rate: number;
@@ -36,6 +39,7 @@ const ItemBlock: FC<IProductsItem> = ({
   title,
 }) => {
   const dispatch = useDispatch();
+  const isLiked = useSelector(SelectIsLiked);
 
   const addToCart = () => {
     const item: ICartSlice = {
@@ -49,22 +53,23 @@ const ItemBlock: FC<IProductsItem> = ({
     dispatch(addProductToCart(item));
   };
 
-  const addToLiked = () => {
-     const item: IProductsItem = {
-       id,
-       title,
-       price,
-       description,
-       category,
-       image,
-     };
-    dispatch(setIsLiked(item));
+  const ToggleLike = () => {
+    const item: IProductsItem = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+    };
+      dispatch(setIsLiked(item))
+   
   };
 
   return (
     <li className={styles.itemBlock}>
       <div className={styles.itemBlock__liked}>
-        <AiOutlineHeart onClick={addToLiked} />
+        <AiOutlineHeart onClick={ToggleLike} />
       </div>
       <div>
         <img className={styles.itemBlock__img} src={image} alt="Product" width={120} />

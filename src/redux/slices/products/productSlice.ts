@@ -21,7 +21,7 @@ export interface IProductsItem {
 export interface IProductState {
   products: IProductsItem[];
   status: string;
-  isLiked: IProductsItem[]
+  isLiked: IProductsItem[];
 }
 
 export enum StatusKey {
@@ -41,7 +41,18 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setIsLiked: (state, action: PayloadAction<IProductsItem>) => {
-      state.isLiked.push(action.payload)
+      // const index = state.isLiked.findIndex((item) => item === action.payload);
+      // console.log(index);
+      // if (index !== action.payload.id) {
+
+      // }
+      // state.isLiked.splice(index, 1);
+
+      state.isLiked.push(action.payload);
+    },
+    removeLiked: (state, action: PayloadAction<IProductsItem>) => {
+      const index = state.isLiked.findIndex((item) => item === action.payload);
+      state.isLiked.splice(index, 1);
     },
   },
   extraReducers: (builder) => {
@@ -62,8 +73,9 @@ const productsSlice = createSlice({
 
 // !actions!
 export const selectProductsAll = (state: RootState) => state.products;
+export const selectProducts = (state: RootState) => state.products.products;
 export const SelectIsLiked = (state: RootState) => state.products.isLiked;
 
-export const { setIsLiked } = productsSlice.actions;
+export const { setIsLiked, removeLiked } = productsSlice.actions;
 
 export default productsSlice.reducer;
