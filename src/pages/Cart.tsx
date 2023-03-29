@@ -1,16 +1,18 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeProduct, SelectAllCart } from '../redux/slices/Cart/CartSlice';
-
-
+import { minusProduct, removeProduct, SelectAllCart } from '../redux/slices/Cart/CartSlice';
 
 const Cart: FC = () => {
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   const { cartProducts, totalPrice } = useSelector(SelectAllCart);
 
   const removeHandler = (item: number) => {
-   dispatch(removeProduct(item));
+    dispatch(removeProduct(item));
+  };
+
+  const minus = (id) => {
+    dispatch(minusProduct(id));
   };
 
   return (
@@ -29,6 +31,7 @@ const Cart: FC = () => {
                 <p>{item.quantity}</p>
               </div>
               <button onClick={() => removeHandler(item.id)}>Удалить товар</button>
+              <button onClick={() => minus(item.id)}>-1</button>
             </li>
           ))}
         </ul>

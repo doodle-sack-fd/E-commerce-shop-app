@@ -6,18 +6,11 @@ import styles from './Modal.module.scss';
 const Modal = ({ isOpen, setIsOpen }) => {
   const isLiked = useSelector(SelectIsLiked);
   const dispatch = useDispatch()
-  const { id, title, price, description, category, image } = useSelector(selectProductsAll);
+  
   console.log(isLiked);
 const removeLike = () => {
-  const item: IProductsItem = {
-    id,
-    title,
-    price,
-    description,
-    category,
-    image,
-  };
-  dispatch(removeLiked(item));
+ 
+  dispatch(removeLiked());
 };
   ;
   return (
