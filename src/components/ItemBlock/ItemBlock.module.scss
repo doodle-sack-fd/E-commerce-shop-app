@@ -9,10 +9,10 @@
   box-sizing: border-box;
   position: relative;
 
-  &__liked{
+  &__liked {
     text-align: right;
 
-    &:hover{
+    &:hover {
       color: red;
     }
   }

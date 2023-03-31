@@ -41,13 +41,6 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setIsLiked: (state, action: PayloadAction<IProductsItem>) => {
-      // const index = state.isLiked.findIndex((item) => item === action.payload);
-      // console.log(index);
-      // if (index !== action.payload.id) {
-
-      // }
-      // state.isLiked.splice(index, 1);
-
       state.isLiked.push(action.payload);
     },
     removeLiked: (state, action: PayloadAction<IProductsItem>) => {

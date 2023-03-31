@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ShippingForm from '../components/ShippingForm/ShippingForm';
 import { minusProduct, removeProduct, SelectAllCart } from '../redux/slices/Cart/CartSlice';
 
 const Cart: FC = () => {
@@ -37,6 +38,10 @@ const Cart: FC = () => {
         </ul>
 
         <div>Total price - {totalPrice}</div>
+
+        <div>
+          <ShippingForm />
+        </div>
       </div>
     </div>
   );

@@ -8,11 +8,9 @@ import ShippingForm from '../components/ShippingForm/ShippingForm';
 const Home: FC = () => {
   return (
     <>
-      {/* <Categories />
+      <Categories />
       <MainBlock />
-      <Footer /> */}
-      {/* <Form/> */}
-      <ShippingForm />
+      <Footer />
     </>
   );
 };

@@ -1,7 +1,10 @@
 import { FC } from 'react';
 import {
-  IProductsItem, SelectIsLiked,
-  setIsLiked
+  IProductsItem,
+  removeLiked,
+  SelectIsLiked,
+  selectProductsAll,
+  setIsLiked,
 } from '../../redux/slices/products/productSlice';
 import styles from './ItemBlock.module.scss';
 
@@ -13,6 +16,7 @@ import CartButton from '../UI/button/CartButton';
 
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { SelectFilterSearch } from '../../redux/slices/Filters/FilterSlice';
 
 export interface IProductRating {
   rate: number;
@@ -29,62 +33,52 @@ export interface IProductsProps {
   rating?: any;
 }
 
-const ItemBlock: FC<IProductsItem> = ({
-  category,
-  description,
-  id,
-  image,
-  price,
-  rating,
-  title,
-}) => {
+const ItemBlock: FC = () => {
   const dispatch = useDispatch();
   const isLiked = useSelector(SelectIsLiked);
 
-  const addToCart = () => {
-    const item: ICartSlice = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-    };
+  const addToCart = (item: ICartSlice) => {
     dispatch(addProductToCart(item));
   };
 
-  const ToggleLike = () => {
-    const item: IProductsItem = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-    };
-      dispatch(setIsLiked(item))
-   
+  const isLike = (item: IProductsItem) => {
+    isLiked.some((elem) => elem.id === item.id)
+      ? dispatch(removeLiked(item))
+      : dispatch(setIsLiked(item));
   };
 
+  const { products, status } = useSelector(selectProductsAll);
+  const searchQuery = useSelector(SelectFilterSearch);
+
+  const product = products.filter((item) => {
+    return searchQuery.toLowerCase() === ''
+      ? item
+      : item.title.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
   return (
-    <li className={styles.itemBlock}>
-      <div className={styles.itemBlock__liked}>
-        <AiOutlineHeart onClick={ToggleLike} />
-      </div>
-      <div>
-        <img className={styles.itemBlock__img} src={image} alt="Product" width={120} />
-      </div>
-      <p className={styles.itemBlock__title}>{title}</p>
-      <p className={styles.itemBlock__rating}>
-        {rating.rate} <FcRating />
-      </p>
-      <p className={styles.itemBlock__price}>
-        {price} <FiDollarSign />
-      </p>
-      <div className={styles.itemBlock__cartContainer}>
-        <CartButton onClick={addToCart}>add to cart</CartButton>
-      </div>
-    </li>
+    <>
+      {product.map((item, id) => (
+        <li key={id} className={styles.itemBlock}>
+          <div className={styles.itemBlock__liked}>
+            <AiOutlineHeart onClick={() => isLike(item)} />
+          </div>
+          <div>
+            <img className={styles.itemBlock__img} src={item.image} alt="Product" width={120} />
+          </div>
+          <p className={styles.itemBlock__title}>{item.title}</p>
+          <p className={styles.itemBlock__rating}>
+            <>{item.rating.rate}</> <FcRating />
+          </p>
+          <p className={styles.itemBlock__price}>
+            {item.price} <FiDollarSign />
+          </p>
+          <div className={styles.itemBlock__cartContainer}>
+            <CartButton onClick={() => addToCart(item)}>add to cart</CartButton>
+          </div>
+        </li>
+      ))}
+    </>
   );
 };
 
