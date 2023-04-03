@@ -1,7 +1,6 @@
-import { fetchProducts } from './../../actions/ActionCreators';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { ICartSlice } from '../Cart/CartSlice';
+import { fetchProducts } from './../../actions/ActionCreators';
 
 export interface IProductRating {
   rate: number;

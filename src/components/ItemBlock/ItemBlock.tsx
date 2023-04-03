@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   IProductsItem,
   removeLiked,
   SelectIsLiked,
   selectProductsAll,
-  setIsLiked,
+  setIsLiked
 } from '../../redux/slices/products/productSlice';
 import styles from './ItemBlock.module.scss';
 
@@ -34,8 +34,10 @@ export interface IProductsProps {
 }
 
 const ItemBlock: FC = () => {
+
   const dispatch = useDispatch();
   const isLiked = useSelector(SelectIsLiked);
+
 
   const addToCart = (item: ICartSlice) => {
     dispatch(addProductToCart(item));
@@ -47,7 +49,7 @@ const ItemBlock: FC = () => {
       : dispatch(setIsLiked(item));
   };
 
-  const { products, status } = useSelector(selectProductsAll);
+  const { products } = useSelector(selectProductsAll);
   const searchQuery = useSelector(SelectFilterSearch);
 
   const product = products.filter((item) => {

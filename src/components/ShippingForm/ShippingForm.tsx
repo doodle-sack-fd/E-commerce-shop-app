@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactSelect from 'react-select';
+import { SelectCartAddProduct, addOrder, addUserData } from '../../redux/slices/Cart/CartSlice';
 import { IOption, IShippingFields } from '../Form/Form.interface';
 
 const options: IOption[] = [
@@ -35,8 +37,12 @@ const ShippingForm: FC = () => {
     mode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<IShippingFields> = (data) => {
-    console.log(data);
+  const dispatch = useDispatch();
+  const cartProducts = useSelector(SelectCartAddProduct);
+  
+  const onSubmit: SubmitHandler<IShippingFields> = (data, item) => {
+    dispatch(addOrder(cartProducts));
+    dispatch(addUserData(data));
     reset();
   };
   return (
@@ -101,7 +107,7 @@ const ShippingForm: FC = () => {
             <div style={{ color: 'red' }}>{errors.address.city.message}</div>
           )}
         </div>
-        
+
         <div>
           <input
             {...register('address.street', {

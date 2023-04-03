@@ -1,6 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { IProductsItem, removeLiked, SelectIsLiked, selectProducts, selectProductsAll } from '../../../redux/slices/products/productSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeLiked, SelectIsLiked } from '../../../redux/slices/products/productSlice';
 import styles from './Modal.module.scss';
 
 const Modal = ({ isOpen, setIsOpen }) => {

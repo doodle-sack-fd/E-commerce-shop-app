@@ -1,20 +1,16 @@
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import CartItem from '../components/Cart/CartItem';
 import ShippingForm from '../components/ShippingForm/ShippingForm';
-import { minusProduct, removeProduct, SelectAllCart } from '../redux/slices/Cart/CartSlice';
+import { SelectAllCart } from '../redux/slices/Cart/CartSlice';
 
 const Cart: FC = () => {
-  const dispatch = useDispatch();
 
-  const { cartProducts, totalPrice } = useSelector(SelectAllCart);
-
-  const removeHandler = (item: number) => {
-    dispatch(removeProduct(item));
-  };
-
-  const minus = (id) => {
-    dispatch(minusProduct(id));
-  };
+  const {
+    cartProducts,
+    totalPrice,
+    order: { orderData, userData },
+  } = useSelector(SelectAllCart);
 
   return (
     <div className="CartBlock">
@@ -22,25 +18,29 @@ const Cart: FC = () => {
         <p>Basket of goods</p>
         <ul className="CartBlock__list">
           {cartProducts.map((item, idx) => (
-            <li key={idx} className="CartBlock__item">
-              <div>
-                <img src={item.image} width="100" height="100" alt="goods" />
-              </div>
-              <div className="CartBlock__desc">
-                <p>{item.title}</p>
-                <p>{item.description}</p>
-                <p>{item.quantity}</p>
-              </div>
-              <button onClick={() => removeHandler(item.id)}>Удалить товар</button>
-              <button onClick={() => minus(item.id)}>-1</button>
+            <CartItem {...item} />
+          ))}
+          <ShippingForm />
+        </ul>
+        <div>
+          {orderData.map((item, id) => (
+            <li>
+              <p>заказ номер: {id}</p>
+              {item.map((i, idx) => (
+                <>
+                  <li>{i.title}</li>
+                </>
+              ))}
             </li>
           ))}
-        </ul>
+        </div>
 
         <div>Total price - {totalPrice}</div>
-
+        <div></div>
         <div>
-          <ShippingForm />
+          {userData.map((i) => (
+            <p>{i.email}</p>
+          ))}
         </div>
       </div>
     </div>
