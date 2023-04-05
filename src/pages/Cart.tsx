@@ -25,7 +25,7 @@ const Cart: FC = () => {
         <div>
           {orderData.map((item, id) => (
             <li>
-              <p>заказ номер: {id}</p>
+              <div>заказ номер: {id}</div>
               {item.map((i, idx) => (
                 <>
                   <li>{i.title}</li>

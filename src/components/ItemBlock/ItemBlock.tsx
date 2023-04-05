@@ -4,7 +4,7 @@ import {
   removeLiked,
   SelectIsLiked,
   selectProductsAll,
-  setIsLiked
+  setIsLiked,
 } from '../../redux/slices/products/productSlice';
 import styles from './ItemBlock.module.scss';
 
@@ -17,6 +17,7 @@ import CartButton from '../UI/button/CartButton';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { SelectFilterSearch } from '../../redux/slices/Filters/FilterSlice';
+import { Link } from 'react-router-dom';
 
 export interface IProductRating {
   rate: number;
@@ -34,10 +35,8 @@ export interface IProductsProps {
 }
 
 const ItemBlock: FC = () => {
-
   const dispatch = useDispatch();
   const isLiked = useSelector(SelectIsLiked);
-
 
   const addToCart = (item: ICartSlice) => {
     dispatch(addProductToCart(item));
@@ -65,10 +64,12 @@ const ItemBlock: FC = () => {
           <div className={styles.itemBlock__liked}>
             <AiOutlineHeart onClick={() => isLike(item)} />
           </div>
-          <div>
-            <img className={styles.itemBlock__img} src={item.image} alt="Product" width={120} />
-          </div>
-          <p className={styles.itemBlock__title}>{item.title}</p>
+          <Link to={`/product/${item.id}`}>
+            <div>
+              <img className={styles.itemBlock__img} src={item.image} alt="Product" width={120} />
+            </div>
+            <p className={styles.itemBlock__title}>{item.title}</p>
+          </Link>
           <p className={styles.itemBlock__rating}>
             <>{item.rating.rate}</> <FcRating />
           </p>

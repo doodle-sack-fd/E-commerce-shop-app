@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import styles from './Header.module.scss';
 import logo from '../../assets/img/logo.svg';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { AiOutlineHeart } from 'react-icons/ai';
 
@@ -15,6 +15,7 @@ import Modal from '../UI/Modal/Modal';
 const Header: FC = () => {
   const totalPrice = useSelector(SelectCartTotalPrice);
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className={styles.header}>
@@ -24,13 +25,19 @@ const Header: FC = () => {
             <img src={logo} alt="Company-logo" />
           </div>
         </Link>
-        <div className={styles.header__search}>
-          <Search />
-        </div>
-        <AiOutlineHeart onClick={() => setIsOpen(true)} className={styles.header__liked} />
-        <Link to="/cart" className={styles.header__link}>
-          <CartButton>{totalPrice}$ cart</CartButton>
-        </Link>
+        {location.pathname !== '/cart' && (
+          <div className={styles.header__search}>
+            <Search />
+          </div>
+        )}
+        {location.pathname !== '/cart' && (
+          <>
+            <AiOutlineHeart onClick={() => setIsOpen(true)} className={styles.header__liked} />
+            <Link to="/cart" className={styles.header__link}>
+              <CartButton>{totalPrice}$ cart</CartButton>
+            </Link>
+          </>
+        )}
       </div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>

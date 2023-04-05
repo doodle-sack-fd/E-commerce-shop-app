@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import './scss/global.scss';
 import Cart from './pages/Cart';
 import MainLayout from './layouts/MainLayout';
+import FullCart from './components/FullCard/FullCard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<Home />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="/product/:id" element={<FullCart />} />
         </Route>
       </Routes>
     </div>
