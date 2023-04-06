@@ -15,7 +15,7 @@ const Categories: FC = () => {
   }
 
   return (
-    <div className={styles.categories}>
+    <section className={styles.categories}>
       <div className={styles.categories__container}>
         <ul className={styles.categories__list}>
           <p className={styles.categories__title}>Catalog</p>
@@ -28,7 +28,7 @@ const Categories: FC = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 };
 

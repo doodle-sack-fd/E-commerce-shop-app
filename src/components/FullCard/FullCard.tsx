@@ -8,11 +8,11 @@ const FullCard: FC = () => {
     title: string;
   }>();
   const { id } = useParams();
-  const API_URL = 'https://fakestoreapi.com/products/';
+  const API_URL_ID = 'https://fakestoreapi.com/products/';
   useEffect(() => {
     async function fetchDataProductsId() {
       try {
-        const { data } = await axios.get('https://fakestoreapi.com/products/' + id);
+        const { data } = await axios.get(API_URL_ID + id);
         console.log(data);
         setProducts(data);
         console.log(products);

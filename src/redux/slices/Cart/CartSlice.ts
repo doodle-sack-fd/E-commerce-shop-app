@@ -1,6 +1,7 @@
 import { RootState } from './../../store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { calcMinusTotalPrice, calcTotalPrice } from '../../../utils/calcTotalPrice';
+import { getItemLs } from '../../../utils/getItemLs';
 
 export interface ICartSlice {
   [x: string]: any;
@@ -18,10 +19,10 @@ export interface ICartState {
   totalPrice: number;
   order: { orderData: ICartSlice[]; userData: any[] };
 }
-
+const cartData = getItemLs();
 const initialState: ICartState = {
-  cartProducts: [],
-  totalPrice: 0,
+  cartProducts: cartData.localData,
+  totalPrice: cartData.totalPrice,
   order: {
     orderData: [],
     userData: [],

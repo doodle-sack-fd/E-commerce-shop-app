@@ -1,0 +1,12 @@
+.panel {
+  background: #d5e893;
+
+  &__container {
+    max-width: 1110px;
+    margin: 0 auto;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

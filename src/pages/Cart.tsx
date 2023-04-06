@@ -5,7 +5,6 @@ import ShippingForm from '../components/ShippingForm/ShippingForm';
 import { SelectAllCart } from '../redux/slices/Cart/CartSlice';
 
 const Cart: FC = () => {
-
   const {
     cartProducts,
     totalPrice,
@@ -33,6 +32,8 @@ const Cart: FC = () => {
               ))}
             </li>
           ))}
+
+          <p>{orderData.length}</p>
         </div>
 
         <div>Total price - {totalPrice}</div>

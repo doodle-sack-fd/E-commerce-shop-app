@@ -23,7 +23,7 @@ const MainBlock: FC = () => {
   }, [dispatch, categoryId]);
 
   return (
-    <div className={styles.MainBlock}>
+    <main className={styles.MainBlock}>
       <div className={styles.MainBlock__container}>
         <div>
           {status === StatusKey.ERROR ? (
@@ -35,7 +35,7 @@ const MainBlock: FC = () => {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

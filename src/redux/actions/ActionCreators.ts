@@ -6,13 +6,14 @@ interface IFetchProductsProps {
   category: string;
 }
 
+const API_URL = 'https://fakestoreapi.com/products';
 export const fetchProducts = createAsyncThunk(
   'products/fetchAll',
   async (params: IFetchProductsProps, thunkAPI) => {
     try {
       const { category } = params;
 
-      const { data } = await axios.get(`https://fakestoreapi.com/products${category}`);
+      const { data } = await axios.get(API_URL + `${category}`);
 
       return data as IProductsItem[];
     } catch (error) {

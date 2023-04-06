@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './Header.module.scss';
 import logo from '../../assets/img/logo.svg';
 
@@ -9,16 +9,27 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import Search from '../Search/Search';
 import CartButton from '../UI/button/CartButton';
 import { useSelector } from 'react-redux';
-import { SelectCartTotalPrice } from '../../redux/slices/Cart/CartSlice';
+import { SelectCartAddProduct, SelectCartTotalPrice } from '../../redux/slices/Cart/CartSlice';
 import Modal from '../UI/Modal/Modal';
 
 const Header: FC = () => {
   const totalPrice = useSelector(SelectCartTotalPrice);
+  const cartProducts = useSelector(SelectCartAddProduct);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const isMounted = useRef(false);
+
+  console.log(isMounted.current);
+  useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(cartProducts);
+      localStorage.setItem('cartProduct', json);
+    }
+    isMounted.current = true;
+  }, [cartProducts, totalPrice]);
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.header__container}>
         <Link to="">
           <div className={styles.header__logo}>
@@ -40,7 +51,7 @@ const Header: FC = () => {
         )}
       </div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
-    </div>
+    </header>
   );
 };
 
