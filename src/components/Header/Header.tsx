@@ -19,11 +19,10 @@ const Header: FC = () => {
   const location = useLocation();
   const isMounted = useRef(false);
 
-  console.log(isMounted.current);
   useEffect(() => {
     if (isMounted.current) {
-      const json = JSON.stringify(cartProducts);
-      localStorage.setItem('cartProduct', json);
+      const jsonCart = JSON.stringify(cartProducts);
+      localStorage.setItem('cartProduct', jsonCart);
     }
     isMounted.current = true;
   }, [cartProducts, totalPrice]);

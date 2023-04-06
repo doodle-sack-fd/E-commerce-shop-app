@@ -19,13 +19,14 @@ export interface ICartState {
   totalPrice: number;
   order: { orderData: ICartSlice[]; userData: any[] };
 }
-const cartData = getItemLs();
+const getLocalStorageFromFunc = getItemLs();
+
 const initialState: ICartState = {
-  cartProducts: cartData.localData,
-  totalPrice: cartData.totalPrice,
+  cartProducts: getLocalStorageFromFunc.localData,
+  totalPrice: getLocalStorageFromFunc.totalPrice,
   order: {
-    orderData: cartData.localOrderData,
-    userData: cartData.localUserData,
+    orderData: getLocalStorageFromFunc.localOrderData,
+    userData: getLocalStorageFromFunc.localUserData,
   },
 };
 

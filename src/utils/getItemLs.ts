@@ -1,8 +1,8 @@
 import { calcTotalPrice } from './calcTotalPrice';
 
 export const getItemLs = () => {
-  const local = localStorage.getItem('cartProduct');
-  const localData = local ? JSON.parse(local) : [];
+  const cart = localStorage.getItem('cartProduct');
+  const localData = cart ? JSON.parse(cart) : [];
 
   const totalPrice = calcTotalPrice(localData);
 
@@ -12,10 +12,14 @@ export const getItemLs = () => {
   const userData = localStorage.getItem('userData');
   const localUserData = userData ? JSON.parse(userData) : [];
 
+  const liked = localStorage.getItem('isLiked');
+  const localLiked = liked ? JSON.parse(liked) : [];
+
   return {
     localData,
     totalPrice,
     localOrderData,
     localUserData,
+    localLiked,
   };
 };

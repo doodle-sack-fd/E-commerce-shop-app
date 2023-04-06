@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { fetchProducts } from './../../actions/ActionCreators';
+import { getItemLs } from '../../../utils/getItemLs';
 
 export interface IProductRating {
   rate: number;
@@ -29,10 +30,12 @@ export enum StatusKey {
   ERROR = 'error',
 }
 
+const getLocalStorageFromFunc = getItemLs()
+
 const initialState: IProductState = {
   products: [],
   status: StatusKey.LOADING,
-  isLiked: [],
+  isLiked: getLocalStorageFromFunc.localLiked,
 };
 
 const productsSlice = createSlice({
