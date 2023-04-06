@@ -24,8 +24,8 @@ const initialState: ICartState = {
   cartProducts: cartData.localData,
   totalPrice: cartData.totalPrice,
   order: {
-    orderData: [],
-    userData: [],
+    orderData: cartData.localOrderData,
+    userData: cartData.localUserData,
   },
 };
 
@@ -64,7 +64,6 @@ const CartSlice = createSlice({
       state.order.orderData.push(action.payload);
       state.cartProducts = [];
       state.totalPrice = 0;
-      
     },
     addUserData: (state, action: PayloadAction<any>) => {
       state.order.userData.push(action.payload);
