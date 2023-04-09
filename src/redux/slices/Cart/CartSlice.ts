@@ -14,10 +14,22 @@ export interface ICartSlice {
   quantity?: number;
 }
 
+export interface IUserData {
+  [x: string]: any;
+  email: string;
+  name: string;
+  address: {
+    city: string;
+    street: string;
+    house: string;
+    country: string;
+  };
+}
+
 export interface ICartState {
   cartProducts: ICartSlice[];
   totalPrice: number;
-  order: { orderData: ICartSlice[]; userData: any[] };
+  order: { orderData: ICartSlice[]; userData: IUserData[] };
 }
 const getLocalStorageFromFunc = getItemLs();
 

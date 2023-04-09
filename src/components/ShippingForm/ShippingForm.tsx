@@ -42,7 +42,7 @@ const ShippingForm: FC = () => {
   
   const onSubmit: SubmitHandler<IShippingFields> = (data, item) => {
     dispatch(addOrder(cartProducts));
-    dispatch(addUserData(data));
+    dispatch(addUserData([data]));
     reset();
   };
   return (

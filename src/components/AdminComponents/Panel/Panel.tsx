@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Panel.module.scss';
+import { FC } from 'react';
 
-const Panel = () => {
+const Panel: FC = () => {
   const location = useLocation();
   console.log(location);
   return (

@@ -32,28 +32,6 @@ const Cart: FC = () => {
           ))}
           <ShippingForm />
         </ul>
-        <div>
-          {orderData.map((item, id) => (
-            <div>
-              <div>заказ номер: {id}</div>
-              {item.map((i, idx) => (
-                <>
-                  <p>{i.title}</p>
-                </>
-              ))}
-            </div>
-          ))}
-
-          <p>{orderData.length}</p>
-        </div>
-
-        <div>Total price - {totalPrice}</div>
-        <div></div>
-        <div>
-          {userData.map((i, id) => (
-            <p>{i.email}</p>
-          ))}
-        </div>
       </div>
     </div>
   );
