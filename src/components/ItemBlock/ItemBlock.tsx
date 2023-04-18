@@ -11,7 +11,7 @@ import styles from './ItemBlock.module.scss';
 import { FcRating } from 'react-icons/fc';
 import { FiDollarSign } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
-import { addProductToCart, ICartSlice } from '../../redux/slices/Cart/CartSlice';
+import { addProductToCart, ICartSlice, removeProduct } from '../../redux/slices/Cart/CartSlice';
 import CartButton from '../UI/button/CartButton';
 
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -37,8 +37,7 @@ export interface IProductsProps {
 const ItemBlock: FC = () => {
   const dispatch = useDispatch();
   const isLiked = useSelector(SelectIsLiked);
-
-  const addToCart = (item: ICartSlice) => {
+  const addToCart = (item) => {
     dispatch(addProductToCart(item));
   };
 
@@ -68,7 +67,7 @@ const ItemBlock: FC = () => {
             <div>
               <img className={styles.itemBlock__img} src={item.image} alt="Product" width={120} />
             </div>
-            <p className={styles.itemBlock__title}>{item.title}</p>
+            <p className={styles.itemBlock__title}>{item.title.slice(0, 30) + '...'}</p>
           </Link>
           <p className={styles.itemBlock__rating}>
             <>{item.rating.rate}</> <FcRating />
@@ -77,7 +76,7 @@ const ItemBlock: FC = () => {
             {item.price} <FiDollarSign />
           </p>
           <div className={styles.itemBlock__cartContainer}>
-            <CartButton onClick={() => addToCart(item)}>add to cart</CartButton>
+            <CartButton onClick={() => addToCart(item)}>add to cart</CartButton>{' '}
           </div>
         </li>
       ))}

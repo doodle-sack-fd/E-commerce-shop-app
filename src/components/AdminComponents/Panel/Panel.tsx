@@ -1,6 +1,6 @@
+import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Panel.module.scss';
-import { FC } from 'react';
 
 const Panel: FC = () => {
   const location = useLocation();
@@ -18,6 +18,7 @@ const Panel: FC = () => {
             <p>Перейти в магазин</p>
           </Link>
         )}
+   
       </div>
     </section>
   );

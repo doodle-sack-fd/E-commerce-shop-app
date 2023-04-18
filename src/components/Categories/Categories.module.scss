@@ -30,6 +30,16 @@
       margin-left: 40px;
       cursor: pointer;
     }
+    
+    .active {
+      border: none;
+      text-transform: uppercase;
+      outline: none;
+      background-color: transparent;
+      color: rgb(230, 35, 103);
+      margin-left: 40px;
+      cursor: pointer;
+    }
   }
 
   &__title {

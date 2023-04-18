@@ -2,15 +2,37 @@
   &__container {
     max-width: 1110px;
     margin: 0 auto;
+    position: relative;
   }
 
-  &__item{
+  &__item {
     display: flex;
-    width: 600px;
+    margin-bottom: 10px;
   }
 
-  &__desc{
+  &__desc {
     text-align: left;
     padding-left: 20px;
+  }
+
+  &__img img {
+  }
+
+  &__change {
+    right: 0;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100px;
+    border-radius: 40px;
+  }
+  &__change:hover {
+    color:rgb(255, 0, 106)
   }
 }

@@ -85,7 +85,7 @@ const ShippingForm: FC = () => {
             required: 'Country is required!',
           }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <div>
+            <div style={{marginBottom:'10px'}}>
               <ReactSelect
                 placeholder="Countries"
                 options={options}
@@ -130,7 +130,7 @@ const ShippingForm: FC = () => {
             <div style={{ color: 'red' }}>{errors.address.house.message}</div>
           )}
         </div>
-        <button>Send</button>
+        <button className='CartBlock__change' style={{margin: '0 auto', width: '300px'}}>Send</button>
       </form>
     </div>
   );

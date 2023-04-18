@@ -50,6 +50,7 @@ const Header: FC = () => {
         )}
       </div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      
     </header>
   );
 };

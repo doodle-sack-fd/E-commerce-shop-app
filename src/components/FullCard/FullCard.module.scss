@@ -1,0 +1,20 @@
+.FullCard {
+  display: flex;
+  max-width: 1110px;
+  margin: 0 auto;
+  margin-top: 100px;
+  &__imageBg {
+    padding-right: 40px;
+  }
+  &__image {
+    width: 600px;
+    height: 600px;
+    background: #e9e9e9;
+    border-radius: 50px;
+    box-shadow: 0 5px 22px rgb(0 0 0 / 10%);
+  }
+  &__description {
+    text-align: left;
+    font-size: 40px;
+  }
+}

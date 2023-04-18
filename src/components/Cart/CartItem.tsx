@@ -1,6 +1,11 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { ICartSlice, minusProduct, removeProduct } from '../../redux/slices/Cart/CartSlice';
+import {
+  ICartSlice,
+  addProductToCart,
+  minusProduct,
+  removeProduct,
+} from '../../redux/slices/Cart/CartSlice';
 
 const CartItem: FC<ICartSlice> = ({ id, image, title, description, quantity }) => {
   const dispatch = useDispatch();
@@ -9,22 +14,37 @@ const CartItem: FC<ICartSlice> = ({ id, image, title, description, quantity }) =
     dispatch(removeProduct(item));
   };
 
-  const minus = (id: number) => {
+  const onClickMinus = () => {
     dispatch(minusProduct(id));
+  };
+
+  const onClickPlus = () => {
+    dispatch(
+      addProductToCart({
+        id,
+      } as ICartSlice),
+    );
   };
 
   return (
     <li key={id} className="CartBlock__item">
-      <div>
+      <div className="CartBlock__img">
         <img src={image} width="100" height="100" alt="goods" />
       </div>
-      <div className="CartBlock__desc">
+      <div style={{ width: '100%' }} className="CartBlock__desc">
         <p>{title}</p>
-        <p>{description}</p>
+        <p>{description.slice(0, 100) + '...'}</p>
         <p>{quantity}</p>
       </div>
-      <button onClick={() => removeHandler(id)}>Удалить товар</button>
-      <button onClick={() => minus(id)}>-1</button>
+      <button className="CartBlock__change" onClick={() => removeHandler(id)}>
+        Удалить товар
+      </button>
+      <button className="CartBlock__change" onClick={onClickMinus}>
+        -1
+      </button>
+      <button className="CartBlock__change" onClick={onClickPlus}>
+        +1
+      </button>
     </li>
   );
 };

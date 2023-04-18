@@ -13,7 +13,7 @@ const ListOrder: FC = () => {
       <div>
         {orderData.map((item, id) => (
           <div className={styles.listOrder__container}>
-            <div>заказ номер: {id + 1}</div>
+            <div>Заказ номер: {id + 1}</div>
             {item.map((i:ICartSlice, idx: number) => (
               <p>
                 {idx + 1} - {i.title}
